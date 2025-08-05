@@ -1,0 +1,29 @@
+{
+  "name": "loopqa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test webAppSuite.spec.js",
+    "test:api": "playwright test apiTests.spec.js",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "test:install": "playwright install",
+    "test:mobile": "playwright test --project=\"Mobile Chrome\"",
+    "test:all-browsers": "playwright test --project=chromium --project=firefox --project=webkit",
+    "test:auth": "playwright test --grep \"User Authentication\"",
+    "test:navigation": "playwright test --grep \"Navigation - Mobile Menu\"",
+    "test:design": "playwright test --grep \"Design System\"",
+    "test:payment": "playwright test --grep \"API Integration - Payment Gateway\"",
+    "test:docs": "playwright test --grep \"Documentation - API Endpoints\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.54.2",
+    "@types/node": "^24.2.0"
+  }
+}

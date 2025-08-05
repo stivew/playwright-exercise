@@ -1,0 +1,60 @@
+{
+  "webapp": {
+    "userAuth": {
+      "credentials": {
+        "username": "admin",
+        "password": "password123"
+      }
+    },
+    "navigation": {
+      "mobileMenu": {
+        "menuItems": [
+          "Home",
+          "Products",
+          "About",
+          "Contact",
+          "Login"
+        ]
+      }
+    },
+    "designSystem": {
+      "colorPalette": {
+        "primary": "#3B82F6",
+        "secondary": "#6B7280",
+        "success": "#10B981",
+        "error": "#EF4444"
+      },
+      "typography": {
+        "fontFamily": "Inter, system-ui, sans-serif",
+        "headingSizes": {
+          "h1": "2.25rem",
+          "h2": "1.875rem"
+        }
+      }
+    },
+    "apiIntegration": {
+      "paymentGateway": {
+        "endpoints": {
+          "createPayment": "/api/payments/create",
+          "processPayment": "/api/payments/process"
+        }
+      }
+    },
+    "documentation": {
+      "apiEndpoints": [
+        {
+          "method": "GET",
+          "path": "/api/users",
+          "description": "Get all users",
+          "requiresAuth": true
+        },
+        {
+          "method": "POST",
+          "path": "/api/users",
+          "description": "Create new user",
+          "requiresAuth": false
+        }
+      ]
+    }
+  }
+}
