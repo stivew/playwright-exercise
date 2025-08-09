@@ -12,8 +12,8 @@ Create a `.env` at the repository root:
 
 ```
 BASE_URL=https://animated-gingersnap-8cf7f2.netlify.app/
-DEMO_EMAIL=admin
-DEMO_PASSWORD=password123
+USERNAME=admin
+PASSWORD=password123
 ```
 
 `BASE_URL` is also defaulted in config to the demo app if not set.

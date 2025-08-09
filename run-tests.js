@@ -64,7 +64,7 @@ function checkPlaywrightInstallation() {
     require('@playwright/test');
     return true;
   } catch (error) {
-    log('Playwright is not installed. Please run: npm install', 'red');
+    log('Playwright is not installed. Please ensure playwright is listed as a dependency and run: npm install', 'red');
     return false;
   }
 }

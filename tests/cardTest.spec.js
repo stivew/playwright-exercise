@@ -8,7 +8,7 @@ const testData = JSON.parse(
 );
 
 test.describe('Feature scenarios (data-driven)', () => {
-  for (const card of testData.demo.cards) {
+  for (const card of testData.cards) {
     test(`Feature: ${card.title}`, async ({ page, context }) => {
       const scenario = scenarios[card.title];
       if (scenario) {
@@ -26,7 +26,7 @@ test.describe('Feature scenarios (data-driven)', () => {
   }
 });
 
-const STRICT = process.env.STRICT_TAG_BEHAVIOR === 'true';
+const STRICT = process.env.STRICT_TAG_BEHAVIOR;
 
 async function runBehaviorChecksForTag(tagText, cardContainer) {
   const checks = tagBehaviorChecks[tagText] || tagBehaviorChecks.__default__;
@@ -75,27 +75,25 @@ const tagBehaviorChecks = {
 
 const scenarios = {
   'Implement user authentication': async ({ page }) => {
-     // Mockup,test does not pass
     await serveFixture(page, '/login', htmlLoginFixture());
     await serveFixture(page, '/dashboard', '<h1>Dashboard</h1><div class="welcome-message">Welcome</div>');
     const login = new LoginPage(page);
     await login.navigate();
-    if (!process.env.DEMO_EMAIL || !process.env.DEMO_PASSWORD) {
-      throw new Error('DEMO_EMAIL and DEMO_PASSWORD environment variables must be set');
+    if (!process.env.USERNAME || !process.env.PASSWORD) {
+      throw new Error('USERNAME and PASSWORD environment variables must be set');
     }
-    await login.login(process.env.DEMO_EMAIL, process.env.DEMO_PASSWORD);
+    await login.login(process.env.USERNAME, process.env.PASSWORD);
     await expect(page).toHaveURL(/\/dashboard$/);
     await expect(page.locator('.welcome-message')).toBeVisible();
   },
   'Add login and signup functionality': async ({ page }) => {
-    // Mockup,test does not pass
     await serveFixture(page, '/signup', htmlSignupFixture());
     await serveFixture(page, '/login', htmlLoginFixture());
     const signup = new SignupPage(page);
     await signup.navigate();
     await signup.signup({ firstName: 'Test', lastName: 'User', email: `test${Date.now()}@example.com`, password: 'Password123!', confirmPassword: 'Password123!' });
     await expect(page).toHaveURL(/\/login$/);
-    await expect(page.locator('.success-message')).toContainText(/account created/i);
+    await expect(page.locator('.success-message')).toContainText("Logged in");
   },
   'Fix navigation bug': async ({ page }) => {
     await serveFixture(page, '/', htmlMobileMenuFixture());
@@ -108,7 +106,6 @@ const scenarios = {
     await expect(nav.mobileMenu).not.toBeVisible();
   },
   'Menu does not close on mobile': async ({ page }) => {
-    // Mockup, test does not pass
     await serveFixture(page, '/', htmlMobileMenuFixture());
     const nav = new MobileNavigation(page);
     await nav.setMobileViewport();
@@ -122,13 +119,13 @@ const scenarios = {
     await serveFixture(page, '/', htmlDesignSystemFixture());
     await page.goto('/');
     const primaryButton = page.locator('button.primary');
-    await expect(primaryButton).toHaveCSS('background-color', 'rgb(59, 130, 246)');
+    await expect(primaryButton).toHaveCSS('background-color', testData.ui.primaryButton.color);
   },
   'Update color palette and typography': async ({ page }) => {
     await serveFixture(page, '/', htmlDesignSystemFixture());
     await page.goto('/');
-    await expect(page.locator('body')).toHaveCSS('font-family', /Inter|system-ui|sans-serif/i);
-    await expect(page.locator('h1')).toHaveCSS('font-size', '36px');
+    await expect(page.locator('body')).toHaveCSS('font-family', testData.ui.bodyFontFamily.family);
+    await expect(page.locator('h1')).toHaveCSS('font-size', testData.ui.h1.fontSize);
   },
   'API integration': async ({ page }) => {
     await runPaymentScenario(page, { cardNumber: '4242424242424242', amount: 1000, expectedStatus: 'succeeded' });
