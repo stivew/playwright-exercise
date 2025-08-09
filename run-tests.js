@@ -4,7 +4,6 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-// Colors for console output
 const colors = {
   reset: '\x1b[0m',
   bright: '\x1b[1m',
@@ -91,7 +90,7 @@ function main() {
       break;
       
     case 'ui':
-      runCommand(`npx playwright test webAppSuite.spec.js ${additionalArgs}`, 'Running UI tests');
+      runCommand(`npx playwright test cardsTags.spec.js ${additionalArgs}`, 'Running UI tests');
       break;
       
     case 'api':
@@ -141,7 +140,6 @@ function main() {
   }
 }
 
-// Handle process termination
 process.on('SIGINT', () => {
   log('\n\nTest execution interrupted by user', 'yellow');
   process.exit(0);

@@ -1,10 +1,9 @@
 import fs from 'fs';
 import path from 'path';
+import { expect } from '@playwright/test';
 
-// Load test data from JSON file
 export const testData = JSON.parse(fs.readFileSync(path.join(__dirname, '../../data/testData.json'), 'utf8'));
 
-// Page Object Models
 export class LoginPage {
   constructor(page) {
     this.page = page;
@@ -16,7 +15,7 @@ export class LoginPage {
   }
 
   async navigate() {
-    await this.page.goto('http://localhost:3000/login');
+    await this.page.goto('/login');
   }
 
   async login(email, password) {
@@ -51,7 +50,7 @@ export class SignupPage {
   }
 
   async navigate() {
-    await this.page.goto('http://localhost:3000/signup');
+    await this.page.goto('/signup');
   }
 
   async signup(userData) {
@@ -110,7 +109,7 @@ export class PaymentPage {
   }
 
   async navigate() {
-    await this.page.goto('http://localhost:3000/payment');
+    await this.page.goto('/payment');
   }
 
   async processPayment(paymentData) {
@@ -143,7 +142,7 @@ export class ApiDocsPage {
   }
 
   async navigate() {
-    await this.page.goto('http://localhost:3000/api-docs');
+    await this.page.goto('/api-docs');
   }
 
   async getEndpointElements() {
@@ -155,7 +154,40 @@ export class ApiDocsPage {
   }
 }
 
-// Helper functions
+export class BoardPage {
+  constructor(page) {
+    this.page = page;
+  }
+
+  async navigate() {
+    await this.page.goto('/');
+  }
+
+  cardTitleLocator(titleText) {
+    return this.page.getByText(titleText, { exact: false }).first();
+  }
+
+  cardContainerFromTitle(titleText) {
+    const title = this.cardTitleLocator(titleText);
+
+    return title.locator('xpath=ancestor::*[self::div or self::article or self::li][1]');
+  }
+
+  async expectCardVisible(titleText) {
+    const title = this.cardTitleLocator(titleText);
+    await expect(title, `Card with title containing "${titleText}" should be visible`).toBeVisible();
+  }
+
+  async expectCardHasTags(titleText, expectedTags) {
+    const card = this.cardContainerFromTitle(titleText);
+
+    for (const tagText of expectedTags) {
+      const tagLocator = card.getByText(tagText, { exact: false });
+      await expect(tagLocator, `Tag "${tagText}" for card "${titleText}"`).toBeVisible();
+    }
+  }
+}
+
 export async function waitForPageLoad(page) {
   await page.waitForLoadState('networkidle');
 }
@@ -218,7 +250,6 @@ export function createTestPayment() {
   };
 }
 
-// Test data generators
 export const testDataGenerators = {
   validCredentials: () => testData.webapp.userAuth.login.validCredentials,
   invalidCredentials: () => testData.webapp.userAuth.login.invalidCredentials,
