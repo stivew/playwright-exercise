@@ -1,31 +1,21 @@
 {
-  "name": "loopqa",
+  "name": "playwright-exercise",
   "version": "1.0.0",
-  "description": "",
+  "description": "Data-driven Playwright test suite for LoopQA technical evaluation",
   "main": "index.js",
   "scripts": {
     "test": "playwright test",
-    "test:ui": "playwright test cardsTags.spec.js",
-    "test:api": "playwright test apiTests.spec.js",
     "test:headed": "playwright test --headed",
+    "test:ui": "playwright test --ui",
     "test:debug": "playwright test --debug",
-    "test:report": "playwright show-report",
-    "test:install": "playwright install",
-    "test:mobile": "playwright test --project=\"Mobile Chrome\"",
-    "test:all-browsers": "playwright test --project=chromium --project=firefox --project=webkit",
-    "test:auth": "playwright test --grep \"User Authentication\"",
-    "test:navigation": "playwright test --grep \"Navigation - Mobile Menu\"",
-    "test:design": "playwright test --grep \"Design System\"",
-    "test:payment": "playwright test --grep \"API Integration - Payment Gateway\"",
-    "test:docs": "playwright test --grep \"Documentation - API Endpoints\""
+    "report": "playwright show-report",
+    "install-browsers": "playwright install"
   },
-  "keywords": [],
+  "keywords": ["playwright", "testing", "automation"],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
-    "@playwright/test": "^1.54.2",
-    "@types/dotenv": "^6.1.1",
-    "@types/node": "^24.2.0",
-    "dotenv": "^17.2.1"
+    "@playwright/test": "^1.40.0",
+    "dotenv": "^16.3.1"
   }
 }

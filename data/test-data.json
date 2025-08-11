@@ -1,0 +1,81 @@
+{
+  "cards": [
+    {
+      "id": "web-1",
+      "title": "Implement user authentication",
+      "description": "Add login and signup functionality",
+      "tags": ["Feature", "High Priority"],
+      "category": "web-application"
+    },
+    {
+      "id": "web-2",
+      "title": "Fix navigation bug",
+      "description": "Menu does not close on mobile",
+      "tags": ["Bug"],
+      "category": "web-application"
+    },
+    {
+      "id": "web-3",
+      "title": "Design system updates",
+      "description": "Update color palette and typography",
+      "tags": ["Design"],
+      "category": "web-application"
+    },
+    {
+      "id": "web-4",
+      "title": "API integration",
+      "description": "Connect to payment gateway",
+      "tags": ["Feature", "High Priority"],
+      "category": "web-application"
+    },
+    {
+      "id": "web-5",
+      "title": "Update documentation",
+      "description": "Add API endpoints documentation",
+      "tags": ["Feature"],
+      "category": "web-application"
+    },
+    {
+      "id": "mobile-1",
+      "title": "Push notification system",
+      "description": "Implement push notifications for iOS and Android",
+      "tags": ["Feature"],
+      "category": "mobile"
+    },
+    {
+      "id": "mobile-2",
+      "title": "Offline mode",
+      "description": "Enable offline data synchronization",
+      "tags": ["Feature", "High Priority"],
+      "category": "mobile"
+    },
+    {
+      "id": "mobile-3",
+      "title": "App icon design",
+      "description": "Create app icons for all required sizes",
+      "tags": ["Design"],
+      "category": "mobile"
+    },
+    {
+      "id": "marketing-1",
+      "title": "Social media calendar",
+      "description": "Plan content for next month",
+      "tags": ["Feature"],
+      "category": "marketing"
+    },
+    {
+      "id": "marketing-2",
+      "title": "Email campaign",
+      "description": "Design and implement Q2 email campaign",
+      "tags": ["Design", "High Priority"],
+      "category": "marketing"
+    },
+    {
+      "id": "marketing-3",
+      "title": "Landing page copy",
+      "description": "Review and approve landing page content",
+      "tags": ["Design"],
+      "category": "marketing"
+    }
+  ]
+}
