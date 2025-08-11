@@ -26,11 +26,9 @@ test.describe('Feature scenarios (data-driven)', () => {
   }
 });
 
-const STRICT = process.env.STRICT_TAG_BEHAVIOR;
-
 async function runBehaviorChecksForTag(tagText, cardContainer) {
   const checks = tagBehaviorChecks[tagText] || tagBehaviorChecks.__default__;
-  await checks(cardContainer, tagText, STRICT);
+  await checks(cardContainer, tagText, process.env.TAG_IS_STRICT);
 }
 
 const tagBehaviorChecks = {
