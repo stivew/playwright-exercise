@@ -28,8 +28,8 @@ test.describe('Web Application Tests', () => {
       const isLoggedIn = await loginPage.isLoggedIn();
       expect(isLoggedIn).toBe(true);
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
+      
     });
 
     test('should show error for invalid email', async ({ page }) => {
@@ -49,8 +49,8 @@ test.describe('Web Application Tests', () => {
       const isLoggedIn = await loginPage.isLoggedIn();
       expect(isLoggedIn).toBe(false);
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
+      
     });
 
     test('should show error for invalid password', async ({ page }) => {
@@ -71,8 +71,8 @@ test.describe('Web Application Tests', () => {
       const isLoggedIn = await loginPage.isLoggedIn();
       expect(isLoggedIn).toBe(false);
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
+      
     });
 
     test('should handle empty form submission', async ({ page }) => {
@@ -92,8 +92,8 @@ test.describe('Web Application Tests', () => {
         await loginPage.assertLoginFormVisible();
       }
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
+      
     });
 
     test('should allow user signup with valid information', async ({ page }) => {
@@ -117,8 +117,7 @@ test.describe('Web Application Tests', () => {
       const successMessage = await landingPage.page.textContent(landingPage.selectors.signupSuccessMessage);
       expect(successMessage).toContain(testCase.successMessage);
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
   });
 
@@ -142,8 +141,7 @@ test.describe('Web Application Tests', () => {
         expect(color.color).not.toBe('rgba(0, 0, 0, 0)');
       }
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
 
     test('should have updated typography', async ({ page }) => {
@@ -163,8 +161,7 @@ test.describe('Web Application Tests', () => {
         expect(type.fontSize).not.toBe('16px');
       }
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
   });
 
@@ -188,8 +185,7 @@ test.describe('Web Application Tests', () => {
         expect(elementVisible).toBe(true);
       }
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
 
     test('should have API documentation', async ({ page }) => {
@@ -212,8 +208,7 @@ test.describe('Web Application Tests', () => {
         expect(apiDocsContent).toContain(section);
       }
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
   });
 });

@@ -37,8 +37,7 @@ test.describe('Marketing Tests', () => {
         expect(elementVisible).toBe(true);
       }
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
   });
 
@@ -67,8 +66,7 @@ test.describe('Marketing Tests', () => {
         expect(elementVisible).toBe(true);
       }
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
   });
 
@@ -97,8 +95,7 @@ test.describe('Marketing Tests', () => {
         expect(elementVisible).toBe(true);
       }
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
   });
 });

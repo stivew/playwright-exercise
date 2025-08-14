@@ -32,8 +32,7 @@ test.describe('Mobile Tests', () => {
       const permission = await landingPage.getNotificationPermission();
       expect(testCase.permissionStates).toContain(permission);
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
 
     test('should implement push notifications for Android', async ({ page }) => {
@@ -51,8 +50,7 @@ test.describe('Mobile Tests', () => {
       const permission = await landingPage.getNotificationPermission();
       expect(testCase.permissionStates).toContain(permission);
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
   });
 
@@ -84,8 +82,7 @@ test.describe('Mobile Tests', () => {
       
       await page.unroute('**/*');
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);
     });
   });
 
@@ -111,9 +108,8 @@ test.describe('Mobile Tests', () => {
         expect(icon.height).toBeTruthy();
       }
       
-      expect(testCase.expectedResult).toBeTruthy();
-      expect(testCase.assertion).toBeTruthy();
       expect(testCase.description).toBeTruthy();
+      expect(testCase.assertion).toBe(testCase.expectedResult);      
     });
   });
 

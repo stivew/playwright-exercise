@@ -4,7 +4,7 @@
       "validLogin": {
         "description": "User should be able to login with valid credentials",
         "expectedResult": true,
-        "assertion": "isLoggedIn should return true",
+        "assertion": "User is successfully logged in and redirected",
         "loginSuccessIndicator": "dashboard",
         "loginSuccessText": "Welcome back"
       },
@@ -61,14 +61,14 @@
       "paymentGateway": {
         "description": "Payment gateway API should be properly integrated",
         "expectedResult": true,
-        "assertion": "API calls to payment gateway should succeed",
+        "assertion": "Payment form elements should be visible and functional",
         "paymentFormElements": ["card-number", "expiry-date", "cvv", "submit-button"],
         "successResponse": "Payment processed successfully"
       },
       "documentation": {
         "description": "API endpoints should be properly documented",
         "expectedResult": true,
-        "assertion": "Documentation endpoints should return valid content",
+        "assertion": "API documentation should contain required sections",
         "requiredEndpoints": ["/api/users", "/api/payments", "/api/orders"],
         "documentationSections": ["Authentication", "Endpoints", "Examples"]
       }
@@ -95,7 +95,7 @@
       "dataSync": {
         "description": "Offline data synchronization should work properly",
         "expectedResult": true,
-        "assertion": "Offline changes should be persisted and synced",
+        "assertion": "Offline indicator should show appropriate status",
         "offlineIndicatorText": "You are currently offline",
         "syncStatusText": "Data synchronized"
       }
@@ -104,7 +104,7 @@
       "requiredSizes": {
         "description": "Mobile app icons should be available in all required sizes",
         "expectedResult": true,
-        "assertion": "All required icon sizes should be present and valid",
+        "assertion": "App icons should have proper alt text and dimensions",
         "requiredIconSizes": ["16x16", "32x32", "48x48", "192x192", "512x512"],
         "iconAltText": "App Icon"
       }
@@ -115,7 +115,7 @@
       "contentPlanning": {
         "description": "Social media content should be planned for next month",
         "expectedResult": true,
-        "assertion": "Content planning tool should contain next month's content",
+        "assertion": "Content calendar should contain planned campaign items",
         "campaignItems": [
           "Q1 Product Launch Campaign",
           "Spring Collection Promotion",
@@ -129,7 +129,7 @@
       "q2Campaign": {
         "description": "Q2 email campaign should be designed and implemented",
         "expectedResult": true,
-        "assertion": "Campaign template should be complete and functional",
+        "assertion": "Email campaign should contain required content and elements",
         "campaignContent": [
           "Q2 Newsletter Template",
           "Product Update Announcements",
@@ -143,7 +143,7 @@
       "contentApproval": {
         "description": "Landing page content should be reviewed and approved",
         "expectedResult": true,
-        "assertion": "Landing page should display approved content",
+        "assertion": "Landing page should display approved content sections",
         "approvedContent": [
           "Hero Section Headline",
           "Feature Benefits List",
