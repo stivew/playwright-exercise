@@ -3,32 +3,32 @@
     "authentication": {
       "validLogin": {
         "description": "User should be able to login with valid credentials",
-        "expectedResult": "User is successfully logged in and redirected",
+        "expectedResult": true,
         "assertion": "isLoggedIn should return true",
         "loginSuccessIndicator": "dashboard",
         "loginSuccessText": "Welcome back"
       },
       "invalidEmail": {
         "description": "Login should fail with invalid email format",
-        "expectedResult": "Error message is displayed",
+        "expectedResult": true,
         "assertion": "Error message should be visible",
         "errorMessageText": "Invalid email format"
       },
       "invalidPassword": {
         "description": "Login should fail with invalid password",
-        "expectedResult": "Error message is displayed",
+        "expectedResult": true,
         "assertion": "Error message should be visible",
         "errorMessageText": "Invalid credentials"
       },
       "emptyForm": {
         "description": "Form submission should be prevented when fields are empty",
-        "expectedResult": "Form remains on login page or shows validation error",
+        "expectedResult": true,
         "assertion": "Login form should still be visible",
         "validationMessage": "Please fill in all required fields"
       },
       "userSignup": {
         "description": "User should be able to sign up with valid information",
-        "expectedResult": "User account is created successfully",
+        "expectedResult": true,
         "assertion": "Signup success message should be displayed",
         "testEmail": "newuser@example.com",
         "testPassword": "newpassword123",
@@ -45,13 +45,13 @@
     "design": {
       "colorPalette": {
         "description": "Color palette should be updated according to design system",
-        "expectedResult": "Colors match the new design specifications",
+        "expectedResult": true,
         "assertion": "CSS custom properties should contain new color values",
         "expectedColors": ["#1a73e8", "#34a853", "#ea4335", "#fbbc04"]
       },
       "typography": {
         "description": "Typography should be updated according to design system",
-        "expectedResult": "Font families and sizes match new specifications",
+        "expectedResult": true,
         "assertion": "CSS font properties should match new typography rules",
         "expectedFontFamily": "Inter",
         "expectedFontSize": "16px"
@@ -60,14 +60,14 @@
     "api": {
       "paymentGateway": {
         "description": "Payment gateway API should be properly integrated",
-        "expectedResult": "Payment processing works without errors",
+        "expectedResult": true,
         "assertion": "API calls to payment gateway should succeed",
         "paymentFormElements": ["card-number", "expiry-date", "cvv", "submit-button"],
         "successResponse": "Payment processed successfully"
       },
       "documentation": {
         "description": "API endpoints should be properly documented",
-        "expectedResult": "API documentation is accessible and complete",
+        "expectedResult": true,
         "assertion": "Documentation endpoints should return valid content",
         "requiredEndpoints": ["/api/users", "/api/payments", "/api/orders"],
         "documentationSections": ["Authentication", "Endpoints", "Examples"]
@@ -78,14 +78,14 @@
     "pushNotifications": {
       "ios": {
         "description": "Push notifications should work on iOS devices",
-        "expectedResult": "Notifications are received and displayed",
+        "expectedResult": true,
         "assertion": "Notification permission should be granted and working",
         "notificationButtonText": "Enable Notifications",
         "permissionStates": ["granted", "default"]
       },
       "android": {
         "description": "Push notifications should work on Android devices",
-        "expectedResult": "Notifications are received and displayed",
+        "expectedResult": true,
         "assertion": "Notification permission should be granted and working",
         "notificationButtonText": "Enable Notifications",
         "permissionStates": ["granted", "default"]
@@ -94,7 +94,7 @@
     "offlineMode": {
       "dataSync": {
         "description": "Offline data synchronization should work properly",
-        "expectedResult": "Data is synced when connection is restored",
+        "expectedResult": true,
         "assertion": "Offline changes should be persisted and synced",
         "offlineIndicatorText": "You are currently offline",
         "syncStatusText": "Data synchronized"
@@ -103,7 +103,7 @@
     "appIcon": {
       "requiredSizes": {
         "description": "Mobile app icons should be available in all required sizes",
-        "expectedResult": "Icons are properly displayed in different contexts",
+        "expectedResult": true,
         "assertion": "All required icon sizes should be present and valid",
         "requiredIconSizes": ["16x16", "32x32", "48x48", "192x192", "512x512"],
         "iconAltText": "App Icon"
@@ -114,7 +114,7 @@
     "socialMedia": {
       "contentPlanning": {
         "description": "Social media content should be planned for next month",
-        "expectedResult": "Content calendar is populated with planned posts",
+        "expectedResult": true,
         "assertion": "Content planning tool should contain next month's content",
         "campaignItems": [
           "Q1 Product Launch Campaign",
@@ -128,7 +128,7 @@
     "emailCampaign": {
       "q2Campaign": {
         "description": "Q2 email campaign should be designed and implemented",
-        "expectedResult": "Email campaign is ready for deployment",
+        "expectedResult": true,
         "assertion": "Campaign template should be complete and functional",
         "campaignContent": [
           "Q2 Newsletter Template",
@@ -142,7 +142,7 @@
     "landingPage": {
       "contentApproval": {
         "description": "Landing page content should be reviewed and approved",
-        "expectedResult": "Content meets approval criteria",
+        "expectedResult": true,
         "assertion": "Landing page should display approved content",
         "approvedContent": [
           "Hero Section Headline",
