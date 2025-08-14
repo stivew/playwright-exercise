@@ -14,7 +14,13 @@ class LoginPage extends BasePage {
       forgotPasswordLink: '[data-testid="forgot-password"], a[href*="forgot"]',
       signupLink: '[data-testid="signup-link"], a[href*="signup"]',
       pageTitle: 'h1, .page-title',
-      loadingSpinner: '[data-testid="loading"], .spinner, .loading'
+      loadingSpinner: '[data-testid="loading"], .spinner, .loading',
+      loginDashboard: [
+        '[data-testid="user-menu"]',
+        '.user-menu',
+        '[data-testid="logout"]',
+        '.logout'
+      ]
     };
   }
 
@@ -41,46 +47,20 @@ class LoginPage extends BasePage {
     await this.clickLoginButton();
   }
 
-  async waitForLoginForm() {
-    await this.waitForElementVisible(this.selectors.loginForm);
-  }
-
-  async isLoginFormVisible() {
-    return await this.isElementVisible(this.selectors.loginForm);
-  }
-
-  async getErrorMessage() {
-    return await this.getElementText(this.selectors.errorMessage);
-  }
-
-  async getSuccessMessage() {
-    return await this.getElementText(this.selectors.successMessage);
-  }
-
   async isErrorMessageVisible() {
     return await this.isElementVisible(this.selectors.errorMessage);
-  }
-
-  async isSuccessMessageVisible() {
-    return await this.isElementVisible(this.selectors.successMessage);
-  }
-
-  async clickForgotPasswordLink() {
-    await this.clickElement(this.selectors.forgotPasswordLink);
   }
 
   async clickSignupLink() {
     await this.clickElement(this.selectors.signupLink);
   }
 
-  async getPageTitleText() {
-    return await this.getElementText(this.selectors.pageTitle);
-  }
-
   async waitForLoadingToComplete() {
     try {
-      await this.page.waitForSelector(this.selectors.loadingSpinner, { state: 'hidden', timeout: 10000 });
+      await this.page.waitForSelector(this.selectors.loadingSpinner, { state: 'hidden' });
     } catch (error) {
+      console.error(`Error occurred while waiting for loading to complete:`, error);
+      throw error;
     }
   }
 
@@ -88,34 +68,8 @@ class LoginPage extends BasePage {
     await this.assertElementVisible(this.selectors.loginForm);
   }
 
-  async assertErrorMessageContains(expectedText) {
-    await this.assertElementContainsText(this.selectors.errorMessage, expectedText);
-  }
-
-  async assertSuccessMessageContains(expectedText) {
-    await this.assertElementContainsText(this.selectors.successMessage, expectedText);
-  }
-
-  async assertPageTitleContains(expectedText) {
-    await this.assertElementContainsText(this.selectors.pageTitle, expectedText);
-  }
-
-  async clearForm() {
-    await this.page.fill(this.selectors.emailInput, '');
-    await this.page.fill(this.selectors.passwordInput, '');
-  }
-
   async isLoggedIn() {
-    const dashboardSelectors = [
-      '[data-testid="dashboard"]',
-      '.dashboard',
-      '[data-testid="user-menu"]',
-      '.user-menu',
-      '[data-testid="logout"]',
-      '.logout'
-    ];
-
-    for (const selector of dashboardSelectors) {
+    for (const selector of this.selectors.loginDashboard) {
       if (await this.isElementVisible(selector)) {
         return true;
       }

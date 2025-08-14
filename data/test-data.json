@@ -1,81 +1,157 @@
 {
-  "cards": [
-    {
-      "id": "web-1",
-      "title": "Implement user authentication",
-      "description": "Add login and signup functionality",
-      "tags": ["Feature", "High Priority"],
-      "category": "web-application"
+  "webApp": {
+    "authentication": {
+      "validLogin": {
+        "description": "User should be able to login with valid credentials",
+        "expectedResult": "User is successfully logged in and redirected",
+        "assertion": "isLoggedIn should return true",
+        "loginSuccessIndicator": "dashboard",
+        "loginSuccessText": "Welcome back"
+      },
+      "invalidEmail": {
+        "description": "Login should fail with invalid email format",
+        "expectedResult": "Error message is displayed",
+        "assertion": "Error message should be visible",
+        "errorMessageText": "Invalid email format"
+      },
+      "invalidPassword": {
+        "description": "Login should fail with invalid password",
+        "expectedResult": "Error message is displayed",
+        "assertion": "Error message should be visible",
+        "errorMessageText": "Invalid credentials"
+      },
+      "emptyForm": {
+        "description": "Form submission should be prevented when fields are empty",
+        "expectedResult": "Form remains on login page or shows validation error",
+        "assertion": "Login form should still be visible",
+        "validationMessage": "Please fill in all required fields"
+      },
+      "userSignup": {
+        "description": "User should be able to sign up with valid information",
+        "expectedResult": "User account is created successfully",
+        "assertion": "Signup success message should be displayed",
+        "testEmail": "newuser@example.com",
+        "testPassword": "newpassword123",
+        "successMessage": "Account created successfully"
+      }
     },
-    {
-      "id": "web-2",
-      "title": "Fix navigation bug",
-      "description": "Menu does not close on mobile",
-      "tags": ["Bug"],
-      "category": "web-application"
+    "navigation": {
+      "mobileMenuClose": {
+        "description": "Mobile navigation menu should close properly",
+        "expectedResult": "Menu closes when navigation action is completed",
+        "assertion": "Menu element should not be visible after navigation"
+      }
     },
-    {
-      "id": "web-3",
-      "title": "Design system updates",
-      "description": "Update color palette and typography",
-      "tags": ["Design"],
-      "category": "web-application"
+    "design": {
+      "colorPalette": {
+        "description": "Color palette should be updated according to design system",
+        "expectedResult": "Colors match the new design specifications",
+        "assertion": "CSS custom properties should contain new color values",
+        "expectedColors": ["#1a73e8", "#34a853", "#ea4335", "#fbbc04"]
+      },
+      "typography": {
+        "description": "Typography should be updated according to design system",
+        "expectedResult": "Font families and sizes match new specifications",
+        "assertion": "CSS font properties should match new typography rules",
+        "expectedFontFamily": "Inter",
+        "expectedFontSize": "16px"
+      }
     },
-    {
-      "id": "web-4",
-      "title": "API integration",
-      "description": "Connect to payment gateway",
-      "tags": ["Feature", "High Priority"],
-      "category": "web-application"
-    },
-    {
-      "id": "web-5",
-      "title": "Update documentation",
-      "description": "Add API endpoints documentation",
-      "tags": ["Feature"],
-      "category": "web-application"
-    },
-    {
-      "id": "mobile-1",
-      "title": "Push notification system",
-      "description": "Implement push notifications for iOS and Android",
-      "tags": ["Feature"],
-      "category": "mobile"
-    },
-    {
-      "id": "mobile-2",
-      "title": "Offline mode",
-      "description": "Enable offline data synchronization",
-      "tags": ["Feature", "High Priority"],
-      "category": "mobile"
-    },
-    {
-      "id": "mobile-3",
-      "title": "App icon design",
-      "description": "Create app icons for all required sizes",
-      "tags": ["Design"],
-      "category": "mobile"
-    },
-    {
-      "id": "marketing-1",
-      "title": "Social media calendar",
-      "description": "Plan content for next month",
-      "tags": ["Feature"],
-      "category": "marketing"
-    },
-    {
-      "id": "marketing-2",
-      "title": "Email campaign",
-      "description": "Design and implement Q2 email campaign",
-      "tags": ["Design", "High Priority"],
-      "category": "marketing"
-    },
-    {
-      "id": "marketing-3",
-      "title": "Landing page copy",
-      "description": "Review and approve landing page content",
-      "tags": ["Design"],
-      "category": "marketing"
+    "api": {
+      "paymentGateway": {
+        "description": "Payment gateway API should be properly integrated",
+        "expectedResult": "Payment processing works without errors",
+        "assertion": "API calls to payment gateway should succeed",
+        "paymentFormElements": ["card-number", "expiry-date", "cvv", "submit-button"],
+        "successResponse": "Payment processed successfully"
+      },
+      "documentation": {
+        "description": "API endpoints should be properly documented",
+        "expectedResult": "API documentation is accessible and complete",
+        "assertion": "Documentation endpoints should return valid content",
+        "requiredEndpoints": ["/api/users", "/api/payments", "/api/orders"],
+        "documentationSections": ["Authentication", "Endpoints", "Examples"]
+      }
     }
-  ]
+  },
+  "mobile": {
+    "pushNotifications": {
+      "ios": {
+        "description": "Push notifications should work on iOS devices",
+        "expectedResult": "Notifications are received and displayed",
+        "assertion": "Notification permission should be granted and working",
+        "notificationButtonText": "Enable Notifications",
+        "permissionStates": ["granted", "default"]
+      },
+      "android": {
+        "description": "Push notifications should work on Android devices",
+        "expectedResult": "Notifications are received and displayed",
+        "assertion": "Notification permission should be granted and working",
+        "notificationButtonText": "Enable Notifications",
+        "permissionStates": ["granted", "default"]
+      }
+    },
+    "offlineMode": {
+      "dataSync": {
+        "description": "Offline data synchronization should work properly",
+        "expectedResult": "Data is synced when connection is restored",
+        "assertion": "Offline changes should be persisted and synced",
+        "offlineIndicatorText": "You are currently offline",
+        "syncStatusText": "Data synchronized"
+      }
+    },
+    "appIcon": {
+      "requiredSizes": {
+        "description": "Mobile app icons should be available in all required sizes",
+        "expectedResult": "Icons are properly displayed in different contexts",
+        "assertion": "All required icon sizes should be present and valid",
+        "requiredIconSizes": ["16x16", "32x32", "48x48", "192x192", "512x512"],
+        "iconAltText": "App Icon"
+      }
+    }
+  },
+  "marketing": {
+    "socialMedia": {
+      "contentPlanning": {
+        "description": "Social media content should be planned for next month",
+        "expectedResult": "Content calendar is populated with planned posts",
+        "assertion": "Content planning tool should contain next month's content",
+        "campaignItems": [
+          "Q1 Product Launch Campaign",
+          "Spring Collection Promotion",
+          "Customer Success Stories",
+          "Industry Insights Series"
+        ],
+        "calendarElements": ["content-calendar", "post-scheduler", "campaign-tracker"]
+      }
+    },
+    "emailCampaign": {
+      "q2Campaign": {
+        "description": "Q2 email campaign should be designed and implemented",
+        "expectedResult": "Email campaign is ready for deployment",
+        "assertion": "Campaign template should be complete and functional",
+        "campaignContent": [
+          "Q2 Newsletter Template",
+          "Product Update Announcements",
+          "Customer Engagement Series",
+          "Promotional Offers"
+        ],
+        "campaignElements": ["template-editor", "subject-line", "send-button"]
+      }
+    },
+    "landingPage": {
+      "contentApproval": {
+        "description": "Landing page content should be reviewed and approved",
+        "expectedResult": "Content meets approval criteria",
+        "assertion": "Landing page should display approved content",
+        "approvedContent": [
+          "Hero Section Headline",
+          "Feature Benefits List",
+          "Customer Testimonials",
+          "Call-to-Action Buttons"
+        ],
+        "pageElements": ["hero-section", "features-section", "testimonials", "cta-section"]
+      }
+    }
+  }
 }
